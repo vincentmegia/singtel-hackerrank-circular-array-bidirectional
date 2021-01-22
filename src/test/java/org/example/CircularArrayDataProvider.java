@@ -6,8 +6,10 @@ public class CircularArrayDataProvider {
     @DataProvider(name = "all")
     public Object[][] allDataProvider() {
         return new Object[][] {
-            {"AZGB", 13},
-            {"ZNMD", 23}
+                {"AZGB", 13},
+                {"ZNMD", 23},
+                {"ZSHQ", 28},
+//                {"QZBFNZA", 23}
         };
     }
 }

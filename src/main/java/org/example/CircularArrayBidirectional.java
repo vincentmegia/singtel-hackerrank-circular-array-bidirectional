@@ -1,16 +1,17 @@
 package org.example;
 
 public class CircularArrayBidirectional {
-    /**
+    /** AZGB = 13
      * Circular Array problem where every move is equilavent to 1 sec,
      * Moves can be left or right
      * @param input
-     * @return
+     * @return ATJZB
      */
     public int process(String input) {
         String[] inputTokens = input.split("");
-        String[] alphabhetTokens = "ABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
-        int startingPoint = 26;
+        String alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        String[] alphabetTokens = alphabet.split("");
+        int startingPoint = 0;
         int rPointer = startingPoint;
         int lPointer = startingPoint;
         int totalMoves = 0;
@@ -19,18 +20,25 @@ public class CircularArrayBidirectional {
             int lCounter = 0;
             int moveToRightCount = 0;
             int moveToLeftCount = 0;
-            while (!inputToken.equals(alphabhetTokens[rPointer])) {
+            while (!inputToken.equals(alphabetTokens[rPointer])) {
                 rPointer++;
                 rCounter++;
-                if (rPointer >= alphabhetTokens.length) break;
+                if (rPointer >= alphabetTokens.length) {
+                    alphabet += alphabet;
+                    alphabetTokens = alphabet.split("");
+                }
             }
             moveToRightCount += rCounter;
 
             //move to left
-            while (!inputToken.equals(alphabhetTokens[lPointer])) {
+            while (!inputToken.equals(alphabetTokens[lPointer])) {
                 lPointer--;
                 lCounter++;
-                if (lPointer < 0) break;
+                if (lPointer <= 0) {
+                    lPointer += 26;
+                    alphabet += alphabet;
+                    alphabetTokens = alphabet.split("");
+                }
             }
             moveToLeftCount += lCounter;
 
